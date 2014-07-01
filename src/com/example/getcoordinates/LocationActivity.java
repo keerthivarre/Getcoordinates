@@ -160,9 +160,7 @@ implements OnClickListener {
             
             editLocation.setText("");  
             pb.setVisibility(View.INVISIBLE);  
-            Toast.makeText(getBaseContext(),"Location changed : Lat: " +  
-   loc.getLatitude()+ " Lng: " + loc.getLongitude(),  
-   Toast.LENGTH_SHORT).show();  
+             
             String longitude = "Longitude: " +loc.getLongitude();    
       Log.v(TAG, longitude);  
       String latitude = "Latitude: " +loc.getLatitude();  
@@ -187,7 +185,9 @@ implements OnClickListener {
       String s = longitude+"\n"+latitude +  
    "\n\nMy Currrent City is: "+cityName;  
            editLocation.setText(s);
-           String text = "loc:"+" " +loc.getLatitude()+","+" "+ loc.getLongitude();
+           
+           
+          String text =" https://www.google.com/maps/?" + loc.getLatitude()+","+loc.getLongitude();
            System.out.println("location values"+ text);
              Intent waIntent = new Intent(Intent.ACTION_SEND);
              waIntent.setType("text/plain");

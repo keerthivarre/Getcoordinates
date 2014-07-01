@@ -4,33 +4,28 @@
  android:orientation="vertical" 
 
  android:layout_width="fill_parent"  
- android:layout_height="fill_parent"  
- android:weightSum="1"
- android:layout_gravity="center|center_vertical"
+ android:layout_height="fill_parent"
+ android:animateLayoutChanges="true"
  
+>
 
-
- >  
-<ImageView
-    android:layout_width="100dp"
-    android:layout_height="75dp"
-    android:src="@drawable/logo"
-    android:layout_gravity="left"/>
- <TextView  
-  android:layout_width="fill_parent"  
-  android:layout_height="wrap_content"  
-  android:text="Get Current Location and City Name"  
-  android:layout_weight="0.20"  
-  android:gravity="center"  
-  android:textSize="20sp" />  
- <EditText  
-  android:layout_width="match_parent"  
-  android:layout_height="wrap_content"  
-  android:layout_weight="0.33"  
-  android:id="@+id/editTextLocation"  
-  android:editable="false">  
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="185dp"
+        android:gravity="center"
+        android:text="Get Current Location and City Name"
+        android:textSize="20sp" />
+  
+ <EditText
+     android:id="@+id/editTextLocation"
+     android:layout_width="340dp"
+     android:layout_height="wrap_content"
+     android:layout_weight="0.49"
+     android:editable="false" >
+  
   <requestFocus></requestFocus>  
- </EditText>  
+ </EditText>
+  
  <LinearLayout  
   android:id="@+id/layButtonH"  
   android:layout_height="wrap_content"  

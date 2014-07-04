@@ -794,10 +794,16 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f070004;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        /** 
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    
+         */
+        public static final int custom_theme_color=0x7f070003;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -985,6 +991,7 @@ containing a value of this type.
         public static final int geologo=0x7f020058;
         public static final int ic_launcher=0x7f020059;
         public static final int logo=0x7f02005a;
+        public static final int marker=0x7f02005b;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1155,13 +1162,10 @@ containing a value of this type.
         public static final int action_settings=0x7f0a000f;
         public static final int app_name=0x7f0a000d;
         public static final int hello_world=0x7f0a000e;
+        public static final int title_activity_marker=0x7f0a0011;
     }
     public static final class style {
         /** 
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    
-
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
@@ -1178,11 +1182,14 @@ containing a value of this type.
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f0b0083;
+        public static final int AppBaseTheme=0x7f0b0086;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f0b0084;
+        public static final int AppTheme=0x7f0b0087;
+        public static final int CustomTheme=0x7f0b0083;
+        public static final int LightThemeSelector=0x7f0b0084;
+        public static final int Numbers=0x7f0b0085;
         /**  Mimic text appearance in select_dialog_item.xml 
          */
         public static final int TextAppearance_AppCompat_Base_CompactMenu_Dialog=0x7f0b0063;

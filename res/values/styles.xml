@@ -4,6 +4,20 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
+    <color name="custom_theme_color">#b0b0ff</color>
+<style name="CustomTheme" parent="android:Theme.Light">
+    <item name="android:windowBackground">@color/custom_theme_color</item>
+    <item name="android:colorBackground">@color/custom_theme_color</item>
+</style>
+
+<style name="LightThemeSelector" parent="android:Theme.Light">
+   
+</style>
+
+<style name="Numbers">
+  <item name="android:inputType">number</item>
+ 
+</style>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
@@ -16,5 +30,6 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    
 
 </resources>

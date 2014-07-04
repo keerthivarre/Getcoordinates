@@ -6,6 +6,7 @@
  android:layout_width="fill_parent"  
  android:layout_height="fill_parent"
  android:animateLayoutChanges="true"
+ android:background="#C0C0C0"
  
 >
 
@@ -14,7 +15,8 @@
         android:layout_height="185dp"
         android:gravity="center"
         android:text="Get Current Location and City Name"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="#800000" />
   
  <EditText
      android:id="@+id/editTextLocation"
@@ -36,11 +38,13 @@
    android:layout_width="wrap_content"  
    android:layout_height="wrap_content"  
    android:text="Get Location"  
-   android:id="@+id/btnLocation"></Button>  
+   android:id="@+id/btnLocation"
+   android:textColor="#800000"></Button>  
    
  </LinearLayout>
    
  <LinearLayout  
+     
   android:id="@+id/layloadingH"  
   android:layout_height="wrap_content"  
   android:layout_weight="0.20"  

@@ -6,53 +6,44 @@
  android:layout_width="fill_parent"  
  android:layout_height="fill_parent"
  android:animateLayoutChanges="true"
- android:background="#C0C0C0"
- 
+ android:background="@drawable/bgr"
 >
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="185dp"
-        android:gravity="center"
-        android:text="Get Current Location and City Name"
-        android:textSize="20sp"
-        android:textColor="#800000" />
+  <LinearLayout
+      android:id="@+id/layButtonH"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="0.15"
+      android:gravity="center"
+      android:orientation="vertical" >
+
+      <ImageButton
+          android:id="@+id/imagebutton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="#708090"
+          
+          android:src="@drawable/loc" />
+
+      <EditText
+          android:id="@+id/editTextLocation"
+          android:layout_width="match_parent"
+          android:layout_height="224dp"
+          android:editable="false"
+          android:textColor="#000000"
+          android:textSize="25dp"
+          
+          
+         >
+
+          
+      </EditText>
+
+      <ProgressBar
+          android:id="@+id/progressBar1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />
+
+  </LinearLayout>
   
- <EditText
-     android:id="@+id/editTextLocation"
-     android:layout_width="340dp"
-     android:layout_height="wrap_content"
-     android:layout_weight="0.49"
-     android:editable="false" >
-  
-  <requestFocus></requestFocus>  
- </EditText>
-  
- <LinearLayout  
-  android:id="@+id/layButtonH"  
-  android:layout_height="wrap_content"  
-  android:layout_width="fill_parent"  
-  android:gravity="center"  
-  android:layout_weight="0.15">  
-  <Button  
-   android:layout_width="wrap_content"  
-   android:layout_height="wrap_content"  
-   android:text="Get Location"  
-   android:id="@+id/btnLocation"
-   android:textColor="#800000"></Button>  
-   
- </LinearLayout>
-   
- <LinearLayout  
-     
-  android:id="@+id/layloadingH"  
-  android:layout_height="wrap_content"  
-  android:layout_weight="0.20"  
-  android:layout_width="fill_parent"  
-  android:gravity="center">  
-  <ProgressBar  
-   android:layout_width="wrap_content"  
-   android:id="@+id/progressBar1"  
-   android:layout_height="wrap_content"></ProgressBar>  
- </LinearLayout>  
 </LinearLayout>  

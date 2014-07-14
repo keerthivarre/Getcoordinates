@@ -987,11 +987,18 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int bgrnd=0x7f020057;
-        public static final int geologo=0x7f020058;
-        public static final int ic_launcher=0x7f020059;
-        public static final int logo=0x7f02005a;
-        public static final int marker=0x7f02005b;
+        public static final int bckgrd=0x7f020057;
+        public static final int bckgrnd=0x7f020058;
+        public static final int bg=0x7f020059;
+        public static final int bgr=0x7f02005a;
+        public static final int bgrnd=0x7f02005b;
+        public static final int geologo=0x7f02005c;
+        public static final int ic_imgbtn=0x7f02005d;
+        public static final int ic_launcher=0x7f02005e;
+        public static final int imgbtn=0x7f02005f;
+        public static final int loc=0x7f020060;
+        public static final int logo=0x7f020061;
+        public static final int marker=0x7f020062;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1005,18 +1012,17 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050041;
+        public static final int action_settings=0x7f050040;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int btnLocation=0x7f05003e;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
-        public static final int editTextLocation=0x7f05003c;
+        public static final int editTextLocation=0x7f05003e;
         public static final int edit_query=0x7f050030;
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
@@ -1026,15 +1032,15 @@ containing a value of this type.
         public static final int icon=0x7f05002a;
         public static final int ifRoom=0x7f05000a;
         public static final int image=0x7f050027;
-        public static final int layButtonH=0x7f05003d;
-        public static final int layloadingH=0x7f05003f;
+        public static final int imagebutton=0x7f05003d;
+        public static final int layButtonH=0x7f05003c;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
-        public static final int progressBar1=0x7f050040;
+        public static final int progressBar1=0x7f05003f;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
@@ -1171,11 +1177,6 @@ containing a value of this type.
             backward-compatibility can go here.
         
 
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
         Base application theme for API 14+. This theme completely replaces
         AppBaseTheme from BOTH res/values/styles.xml and
         res/values-v11/styles.xml on API 14+ devices.
@@ -1184,6 +1185,7 @@ containing a value of this type.
          */
         public static final int AppBaseTheme=0x7f0b0086;
         /**  Application theme. 
+ All customizations that are NOT specific to a particular API-level can go here. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0b0087;
@@ -1240,6 +1242,12 @@ containing a value of this type.
         public static final int TextAppearance_AppCompat_Widget_PopupMenu_Small=0x7f0b002f;
         public static final int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item=0x7f0b0062;
         public static final int TextAppearance_Widget_AppCompat_ExpandedMenu_Item=0x7f0b0028;
+        /** 
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    
+         */
+        public static final int Theme_AppBaseTheme=0x7f0b0088;
         /**  Themes in the "Theme.AppCompat" family will contain an action bar by default.
          If Holo themes are available on the current platform version they will be used.
          A limited Holo-styled action bar will be provided on platform versions older

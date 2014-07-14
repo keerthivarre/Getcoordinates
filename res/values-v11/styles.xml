@@ -4,9 +4,23 @@
         Base application theme for API 11+. This theme completely replaces
         AppBaseTheme from res/values/styles.xml on API 11+ devices.
     -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!-- API 11 theme customizations can go here. -->
-    </style>
+   
+        <style name="Theme.AppBaseTheme" parent="@android:style/Theme.Light">
+    <item name="android:editTextColor">#FFFFFF</item> 
+    <item name="android:textColorPrimary">#FFFFFF</item>
+    <item name="android:textColorSecondary">#FFFFFF</item>
+    <item name="android:textColorTertiary">#FFFFFF</item>
+    <item name="android:textColorPrimaryInverse">#FFFFFF</item>
+    <item name="android:textColorSecondaryInverse">#FFFFFF</item>
+    <item name="android:textColorTertiaryInverse">#FFFFFF</item>
+
+     <item name="android:windowBackground">@drawable/bgr</item>        
+</style>
+
+<style name="AppTheme" parent="AppBaseTheme">
+    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+</style>
+    
     <style name="LightThemeSelector" parent="android:Theme.Holo.Light">
     
 </style>

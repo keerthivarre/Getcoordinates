@@ -8,6 +8,7 @@ import java.util.Locale;
 
 
 
+
 import android.app.Activity;  
 import android.app.AlertDialog;  
 import android.content.ActivityNotFoundException;
@@ -28,6 +29,7 @@ import android.view.View;
 import android.view.View.OnClickListener;  
 import android.widget.Button;  
 import android.widget.EditText;  
+import android.widget.ImageButton;
 import android.widget.ProgressBar;  
 import android.widget.Toast;  
   
@@ -61,8 +63,8 @@ implements OnClickListener {
     
   editLocation = (EditText) findViewById(R.id.editTextLocation);   
   
-  btnGetLocation = (Button) findViewById(R.id.btnLocation);  
-  btnGetLocation.setOnClickListener(this); 
+  ImageButton btButton = (ImageButton) findViewById(R.id.imagebutton);  
+  btButton.setOnClickListener(this); 
   
  
   
@@ -81,14 +83,14 @@ implements OnClickListener {
      
    Log.v(TAG, "onClick");    
      
-   editLocation.setText("Please!! move your device to"+  
-   " see the changes in coordinates."+"\nWait..");  
+  /* editLocation.setText("Please!! move your device to"+  
+   " see the changes in coordinates."+"\nWait..");  */
      
    pb.setVisibility(View.VISIBLE);  
    locationListener = new MyLocationListener();  
   
    locationManager.requestLocationUpdates(LocationManager  
-   .GPS_PROVIDER, 5000, 10,locationListener);
+   .GPS_PROVIDER, 1000055000, 10,locationListener);
    
  
  
@@ -191,7 +193,7 @@ implements OnClickListener {
            
           String text ="location:"+" https://maps.google.com/?q=" + loc.getLatitude()+","+loc.getLongitude();
            System.out.println("location values"+ text);
-             Intent waIntent = new Intent(Intent.ACTION_SEND);
+             /*Intent waIntent = new Intent(Intent.ACTION_SEND);
              waIntent.setType("text/plain");
                      
              waIntent.setPackage("com.whatsapp");
@@ -207,33 +209,33 @@ implements OnClickListener {
              gmailIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
             startActivity(Intent.createChooser(gmailIntent, "send to"));
              
-        }
+        }*/
            Intent i=new Intent(android.content.Intent.ACTION_SEND);
            i.setType("text/plain");
            i.putExtra(android.content.Intent.EXTRA_SUBJECT,"");
            i.putExtra(android.content.Intent.EXTRA_TEXT,text);
            startActivity(Intent.createChooser(i,"Share via"));
-        }*/
+        }
            
 
 		@Override
 		public void onProviderDisabled(String arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 
 		@Override
 		public void onProviderEnabled(String arg0) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 
 		@Override
 		public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
 			// TODO Auto-generated method stub
-			
+
 		}
            
            

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>  
+<?xml version="1.0" encoding="utf-8"?> 
+ 
 <LinearLayout  
  xmlns:android="http://schemas.android.com/apk/res/android"  
  android:orientation="vertical" 
@@ -6,44 +7,69 @@
  android:layout_width="fill_parent"  
  android:layout_height="fill_parent"
  android:animateLayoutChanges="true"
- android:background="@drawable/bgr"
+ android:background="@drawable/bgr4"
+ android:id="@+id/loc"
+   
 >
 
-  <LinearLayout
-      android:id="@+id/layButtonH"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:layout_weight="0.15"
-      android:gravity="center"
-      android:orientation="vertical" >
 
-      <ImageButton
-          android:id="@+id/imagebutton"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="#708090"
-          
-          android:src="@drawable/loc" />
+    <LinearLayout
+        
+        
+        android:id="@+id/layButtonH"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-      <EditText
-          android:id="@+id/editTextLocation"
-          android:layout_width="match_parent"
-          android:layout_height="224dp"
-          android:editable="false"
-          android:textColor="#000000"
-          android:textSize="25dp"
-          
-          
-         >
+        <ImageView
+            android:id="@+id/animationImage"
+            android:layout_width="38dp"
+            android:layout_height="63dp"
+            android:contentDescription="@string/animation_image" />
 
-          
-      </EditText>
+        <ImageButton
+            android:id="@+id/imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:src="@drawable/loc" />
 
-      <ProgressBar
-          android:id="@+id/progressBar1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/editTextLocation"
+            android:layout_width="match_parent"
+            android:layout_height="176dp"
+            android:editable="false"
+            android:textColor="#000000"
+            android:textSize="20dp" >
+		
+            <requestFocus />
+                  
+        </EditText>
+        
+      
+		    
+      "
+		<Button 
+		    android:id="@+id/btn"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/btn1"
+		    />
 
-  </LinearLayout>
-  
-</LinearLayout>  
+		<Button
+		    android:id="@+id/list"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:text="@string/list" />
+        
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+           />
+    </LinearLayout>
+    
+</LinearLayout> 

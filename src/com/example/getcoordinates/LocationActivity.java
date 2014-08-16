@@ -1,9 +1,8 @@
 package com.example.getcoordinates;
   
 import java.io.IOException;  
-import java.util.List;  
-import java.util.Locale;  
-  
+import java.util.List; 
+import java.util.Locale;
 
 
 
@@ -11,34 +10,44 @@ import java.util.Locale;
 
 import android.app.Activity;  
 import android.app.AlertDialog;  
+import android.app.Dialog;
+import android.app.TabActivity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;  
 import android.content.Context;  
 import android.content.DialogInterface;  
 import android.content.Intent;  
 import android.content.pm.ActivityInfo;  
+import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
 import android.location.Address;  
 import android.location.Geocoder;  
 import android.location.Location;  
 import android.location.LocationListener;  
 import android.location.LocationManager;  
+import android.net.Uri;
 import android.os.Bundle;  
+import android.os.Handler;
 import android.provider.Settings;  
 import android.util.Log;  
 import android.view.View;  
 import android.view.View.OnClickListener;  
+import android.webkit.WebSettings.TextSize;
 import android.widget.Button;  
 import android.widget.EditText;  
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;  
+import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;  
+import android.widget.TabHost.TabSpec;
   
 public class LocationActivity extends Activity   
 implements OnClickListener {  
    
  private LocationManager locationManager=null;  
  private LocationListener locationListener=null;   
-   
  private Button btnGetLocation = null;  
  private EditText editLocation = null;   
  private ProgressBar pb =null;  
@@ -58,13 +67,39 @@ implements OnClickListener {
   setRequestedOrientation(ActivityInfo  
   .SCREEN_ORIENTATION_PORTRAIT);  
   
-  pb = (ProgressBar) findViewById(R.id.progressBar1);  
+  pb = (ProgressBar) findViewById(R.id.progressBar);  
   pb.setVisibility(View.INVISIBLE);  
+  
     
   editLocation = (EditText) findViewById(R.id.editTextLocation);   
   
-  ImageButton btButton = (ImageButton) findViewById(R.id.imagebutton);  
-  btButton.setOnClickListener(this); 
+  final ImageButton btButton = (ImageButton) findViewById(R.id.imagebutton);  
+  btButton.setOnClickListener(this);
+  
+  ImageView imview=(ImageView) findViewById(R.id.animationImage);
+	imview.setBackgroundResource(R.layout.animation);
+	AnimationDrawable frameAnimation = (AnimationDrawable) imview.getBackground();
+	
+	
+	if (frameAnimation.isRunning()) { 
+		frameAnimation.stop(); 
+		
+		} 
+	else { 
+		frameAnimation.start(); 
+		
+		} 
+  Button list=(Button) findViewById(R.id.list);
+  list.setOnClickListener(new View.OnClickListener() {
+	
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		Intent list=new Intent(getApplicationContext(),SendActivity.class);
+		startActivity(list);
+	}
+});
+  
   
  
   
@@ -75,11 +110,12 @@ implements OnClickListener {
   
  }  
  
+ 
   
  @Override  
  public void onClick(View v) {  
   flag = displayGpsStatus();  
-  if (flag) {  
+ if (flag) {  
      
    Log.v(TAG, "onClick");    
      
@@ -88,6 +124,11 @@ implements OnClickListener {
      
    pb.setVisibility(View.VISIBLE);  
    locationListener = new MyLocationListener();  
+   ProgressBar spinner = new android.widget.ProgressBar(this,
+           null,
+           android.R.attr.progressBarStyle);
+
+spinner.getIndeterminateDrawable().setColorFilter(0xFF000000, android.graphics.PorterDuff.Mode.MULTIPLY);
   
    locationManager.requestLocationUpdates(LocationManager  
    .GPS_PROVIDER, 1000055000, 10,locationListener);
@@ -103,17 +144,21 @@ implements OnClickListener {
     else {  
    alertbox("Gps Status!!", "Your GPS is: OFF");  
     }  
-  }
-
+ 
+  
+  
+ 
+ }
   
  /*----Method to Check GPS is enable or disable ----- */  
  private Boolean displayGpsStatus() {  
-  ContentResolver contentResolver = getBaseContext()  
-  .getContentResolver();  
-  boolean gpsStatus = Settings.Secure  
+ ContentResolver contentResolver = getBaseContext()  
+  .getContentResolver(); 
+  boolean gpsStatus =
+  Settings.Secure  
   .isLocationProviderEnabled(contentResolver,   
-  LocationManager.GPS_PROVIDER);  
-  if (gpsStatus) {  
+  LocationManager.GPS_PROVIDER); 
+  if (gpsStatus) { 
    return true;  
   
   } else {  
@@ -123,19 +168,21 @@ implements OnClickListener {
   
  /*----------Method to create an AlertBox ------------- */  
  protected void alertbox(String title, String mymessage) {  
-  AlertDialog.Builder builder = new AlertDialog.Builder(this);  
+  final AlertDialog.Builder builder = new AlertDialog.Builder(this);  
   builder.setMessage("Your Device's GPS is Disable")  
   .setCancelable(false)  
   .setTitle("** Gps Status **")  
-  .setPositiveButton("Gps On",  
+  .setPositiveButton("OK", 
+		  
    new DialogInterface.OnClickListener() {  
    public void onClick(DialogInterface dialog, int id) {  
    // finish the current activity  
-   // AlertBoxAdvance.this.finish();  
+   //AlertBoxAdvance.this.finish();
+	
+   
    Intent myIntent = new Intent(  
-   Settings.ACTION_SECURITY_SETTINGS);  
-   startActivity(myIntent);  
-      dialog.cancel();  
+   Settings.ACTION_LOCATION_SOURCE_SETTINGS);  
+   startActivity(myIntent); 
    }  
    })  
    .setNegativeButton("Cancel",  
@@ -144,11 +191,56 @@ implements OnClickListener {
     // cancel the dialog box  
     dialog.cancel();  
     }  
-   });  
+   });
+  pb.setVisibility(View.INVISIBLE);  
   AlertDialog alert = builder.create();  
   alert.show();  
  }  
    
+ 
+ /*private class TabsActivity extends TabActivity {
+	 
+		public void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			setContentView(R.layout.activity_location);
+	 
+			Resources resssources = getResources(); 
+			TabHost tabHost = getTabHost(); 
+	 
+			// Android tab
+			Intent intentAndroid = new Intent().setClass(this, Tab1Activity.class);
+			TabSpec tabSpecAndroid = tabHost
+			  .newTabSpec("Android")
+			  .setIndicator("", resssources.getDrawable(R.drawable.tab1))
+			  .setContent(intentAndroid);
+	 
+			// Apple tab
+			Intent intentApple = new Intent().setClass(this, Tab2Activity.class);
+			TabSpec tabSpecApple = tabHost
+			  .newTabSpec("Apple")
+			  .setIndicator("", resssources.getDrawable(R.drawable.tab2))
+			  .setContent(intentApple);
+	 
+			// Windows tab
+			Intent intentWindows = new Intent().setClass(this, Tab3Activity.class);
+			TabSpec tabSpecWindows = tabHost
+			  .newTabSpec("Windows")
+			  .setIndicator("", resssources.getDrawable(R.drawable.tab3))
+			  .setContent(intentWindows);
+	 
+			// Blackberry tab
+			
+			// add all tabs 
+			tabHost.addTab(tabSpecAndroid);
+			tabHost.addTab(tabSpecApple);
+			tabHost.addTab(tabSpecWindows);
+		
+	 
+			//set Windows tab as default (zero based)
+			tabHost.setCurrentTab(2);
+		}
+	 
+	}*/
  /*----------Listener class to get coordinates ------------- */  
  private class MyLocationListener implements LocationListener { 
 
@@ -172,7 +264,7 @@ implements OnClickListener {
             
       location  = loc;
     /*----------to get City-Name from coordinates ------------- */  
-      String cityName=null;                
+      String cityName = null;                
       Geocoder gcd = new Geocoder(getBaseContext(),   
    Locale.getDefault());               
       List<Address>  addresses;    
@@ -182,17 +274,21 @@ implements OnClickListener {
       if (addresses.size() > 0)    
          System.out.println(addresses.get(0).getLocality());    
          cityName=addresses.get(0).getLocality();    
-        } catch (IOException e) {              
-        e.printStackTrace();    
+        } 
+     
+      catch (IOException e) {              
+        e.printStackTrace(); 
+        
       }   
             
       String s = longitude+"\n"+latitude +  
    "\n\nMy Currrent City is: "+cityName;  
            editLocation.setText(s);
            
-           
-          String text ="location:"+" https://maps.google.com/?q=" + loc.getLatitude()+","+loc.getLongitude();
+          final String text =" https://maps.google.com/?q=" + loc.getLatitude()+","+loc.getLongitude();
            System.out.println("location values"+ text);
+           
+           
              /*Intent waIntent = new Intent(Intent.ACTION_SEND);
              waIntent.setType("text/plain");
                      
@@ -205,7 +301,7 @@ implements OnClickListener {
             /* Intent gmailIntent = new Intent();
              gmailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
              String subject = null;
-			gmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Location Coordinates");
+			gmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
              gmailIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
             startActivity(Intent.createChooser(gmailIntent, "send to"));
              
@@ -215,9 +311,46 @@ implements OnClickListener {
            i.putExtra(android.content.Intent.EXTRA_SUBJECT,"");
            i.putExtra(android.content.Intent.EXTRA_TEXT,text);
            startActivity(Intent.createChooser(i,"Share via"));
+           
+           
+           /*Intent imgintent=new Intent(android.content.Intent.ACTION_SEND);
+          imgintent.setType("image/png");
+           imgintent.putExtra(Intent.EXTRA_STREAM,R.drawable.i4);
+           startActivity(Intent.createChooser(imgintent,getResources().getText(R.string.share)));*/
+           
+           
+           
+           Button save=(Button) findViewById(R.id.btn);
+           save.setOnClickListener(new View.OnClickListener() {
+          	
+          	@Override
+          	public void onClick(View arg0) {
+          		// TODO Auto-generated method stub
+          		
+          		EditText et=
+        				(EditText) findViewById(R.id.editTextLocation);
+          		 
+          		Intent intent=new Intent(getApplicationContext(),SaveActivity.class);
+          		
+          		intent.putExtra("text",text);
+          		startActivity(intent);
+          		/*TextView tv1 = (TextView)findViewById(R.id.save);
+               	DbActivity dbHelper = new DbActivity(getApplicationContext());
+                   String[] data = dbHelper.getData();
+                   for(int j=0;j<data.length;j++){
+                   	tv1.append(data[j]+"\n");
+                   }*/
+        		
+          		
+          		
+          	}
+          	
+          });
+          
+           
         }
            
-
+       
 		@Override
 		public void onProviderDisabled(String arg0) {
 			// TODO Auto-generated method stub

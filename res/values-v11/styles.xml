@@ -14,7 +14,7 @@
     <item name="android:textColorSecondaryInverse">#FFFFFF</item>
     <item name="android:textColorTertiaryInverse">#FFFFFF</item>
 
-     <item name="android:windowBackground">@drawable/bgr</item>        
+     <item name="android:windowBackground">@drawable/bgr3</item>        
 </style>
 
 <style name="AppTheme" parent="AppBaseTheme">
